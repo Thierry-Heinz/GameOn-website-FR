@@ -35,10 +35,10 @@ img {
   margin: 3.5%;
 }
 .header-logo {
-    float: left;
+  float: left;
 }
 .main-navbar {
-    float: right;
+  float: right;
 }
 .topnav a {
   float: left;
@@ -69,7 +69,9 @@ img {
 }
 
 @media screen and (max-width: 768px) {
-  .topnav a {display: none;}
+  .topnav a {
+    display: none;
+  }
   .topnav a.icon {
     float: right;
     display: block;
@@ -77,7 +79,9 @@ img {
 }
 
 @media screen and (max-width: 768px) {
-  .topnav.responsive {position: relative;}
+  .topnav.responsive {
+    position: relative;
+  }
   .topnav.responsive .icon {
     position: absolute;
     right: 0;
@@ -90,16 +94,16 @@ img {
   }
 }
 
-
-
- @media screen and (max-width: 540px) {
-  .topnav a {display: none;}
+@media screen and (max-width: 540px) {
+  .topnav a {
+    display: none;
+  }
   .topnav a.icon {
     float: right;
     display: block;
     margin-top: -15px;
   }
-} 
+}
 
 main {
   font-size: 130%;
@@ -111,8 +115,6 @@ main {
   margin: 1px 20px 15px;
   border-radius: 2rem;
   text-align: justify;
-
-
 }
 
 .modal-btn {
@@ -175,6 +177,8 @@ main {
   max-width: 500px;
   animation-name: modalopen;
   animation-duration: var(--modal-duration);
+  animation-direction: normal;
+  animation-fill-mode: forwards;
   background: #232323;
   border-radius: 10px;
   overflow: hidden;
@@ -296,7 +300,7 @@ input[data-error]::after {
   left: 21%;
   top: 19%;
 }
-.close {
+.modal-close {
   position: absolute;
   right: 15px;
   top: 15px;
@@ -306,8 +310,8 @@ input[data-error]::after {
   cursor: pointer;
   transform: scale(0.7);
 }
-.close:before,
-.close:after {
+.modal-close:before,
+.modal-close:after {
   position: absolute;
   left: 15px;
   content: " ";
@@ -315,10 +319,10 @@ input[data-error]::after {
   width: 3px;
   background-color: #fff;
 }
-.close:before {
+.modal-close:before {
   transform: rotate(45deg);
 }
-.close:after {
+.modal-close:after {
   transform: rotate(-45deg);
 }
 .btn-submit,
@@ -526,4 +530,3 @@ footer {
     opacity: 1;
   }
 }
-
