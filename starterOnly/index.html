@@ -56,12 +56,7 @@
         <div class="content">
           <span class="modal-close"></span>
           <div class="modal-body">
-            <form
-              name="reserve"
-              action="index.html"
-              method="get"
-              onsubmit="return validate();"
-            >
+            <form name="reserve" action="index.html" method="get">
               <div class="formData">
                 <label for="firstName">Prénom</label><br />
                 <input
@@ -198,6 +193,7 @@
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
                 <br />
+
                 <input class="checkbox-input" type="checkbox" id="checkbox2" />
                 <label class="checkbox2-label" for="checkbox2">
                   <span class="checkbox-icon"></span>
@@ -205,6 +201,7 @@
                 </label>
                 <br />
               </div>
+
               <input class="btn-submit" type="submit" value="C'est parti" />
             </form>
           </div>
@@ -215,5 +212,6 @@
       <p class="copyrights">Copyright 2014 - 2022, GameOn Inc.</p>
     </footer>
     <script src="modal.js"></script>
+    <script src="formValidation.js"></script>
   </body>
 </html>

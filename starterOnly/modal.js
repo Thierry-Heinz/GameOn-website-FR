@@ -9,12 +9,9 @@ function editNav() {
 
 // DOM Elements
 const modalbg = document.querySelector(".bground");
-const modalContent = modalbg.querySelector(".content");
 
 const modalOpenBtn = document.querySelector(".modal-btn");
 const modalCloseBtn = document.querySelector(".modal-close");
-
-const formData = document.querySelectorAll(".formData");
 
 // launch modal event
 modalOpenBtn.addEventListener("click", launchModal);
@@ -25,7 +22,7 @@ function launchModal() {
 }
 
 // Close modal listener for both background and the close button
-modalbg.addEventListener("click", closeModal);
+//modalbg.addEventListener("click", closeModal);
 modalCloseBtn.addEventListener("click", closeModal);
 
 // Close Modal function
