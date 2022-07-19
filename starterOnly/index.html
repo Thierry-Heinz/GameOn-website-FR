@@ -64,9 +64,10 @@
                   type="text"
                   id="firstName"
                   name="firstName"
-                  minlength="2"
                 /><br />
+                <small></small>
               </div>
+
               <div class="formData">
                 <label for="lastName">Nom</label><br />
                 <input
@@ -75,7 +76,9 @@
                   id="lastName"
                   name="lastName"
                 /><br />
+                <small></small>
               </div>
+
               <div class="formData">
                 <label for="email">E-mail</label><br />
                 <input
@@ -84,7 +87,9 @@
                   id="email"
                   name="email"
                 /><br />
+                <small></small>
               </div>
+
               <div class="formData">
                 <label for="birthdate">Date de naissance</label><br />
                 <input
@@ -93,7 +98,9 @@
                   id="birthdate"
                   name="birthdate"
                 /><br />
+                <small></small>
               </div>
+
               <div class="formData">
                 <label for="quantity"
                   >À combien de tournois GameOn avez-vous déjà participé
@@ -108,6 +115,7 @@
                   max="99"
                 />
               </div>
+
               <p class="text-label">
                 A quel tournoi souhaitez-vous participer cette année ?
               </p>
@@ -178,6 +186,7 @@
                   <span class="checkbox-icon"></span>
                   Portland</label
                 >
+                <small></small>
               </div>
 
               <div class="formData">
@@ -186,7 +195,6 @@
                   type="checkbox"
                   id="checkbox1"
                   checked
-                  required
                 />
                 <label class="checkbox2-label" for="checkbox1">
                   <span class="checkbox-icon"></span>
@@ -200,9 +208,13 @@
                   Je souhaite être prévenu des prochains évènements.
                 </label>
                 <br />
+
+                <small></small>
               </div>
 
               <input class="btn-submit" type="submit" value="C'est parti" />
+
+              <small id="successHolder"></small>
             </form>
           </div>
         </div>

@@ -2,6 +2,7 @@
 
 //DOM elements
 const form = document.querySelector("form");
+//const formdata = document.querySelectorAll(".formData");
 
 //form fields for validation
 const firstName = document.querySelector("#firstName");
@@ -13,7 +14,9 @@ const radio = document.getElementsByName("location");
 const userCheckbox = document.querySelector("#checkbox1");
 const userPreference = document.querySelector("#checkbox2");
 
-//Utility Functions
+/**
+ * Utility Functions
+ **/
 
 //Check if not Empty
 const isRequired = (value) => {
@@ -25,7 +28,7 @@ const isRequired = (value) => {
 };
 
 //Check text is minimun length
-const isMin = (length, min) => {
+const isMinLength = (length, min) => {
   if (length < min) {
     return false;
   } else {
@@ -46,6 +49,12 @@ const isNumber = (number) => {
 const isEmailValid = (email) => {
   const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return regex.test(email);
+};
+
+//Test
+const isDateYmd = (date) => {
+  const regex = /^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/;
+  return regex.test(date);
 };
 
 //Check if radio is selected
@@ -73,10 +82,9 @@ const isCheckboxChecked = (checkboxEl) => {
 //Name validation
 const validateName = (name) => {
   const minLength = 2;
-
   if (!isRequired(name)) {
     return false;
-  } else if (!isMin(name.length, minLength)) {
+  } else if (!isMinLength(name.length, minLength)) {
     return false;
   } else {
     return true;
@@ -94,6 +102,22 @@ const validateEmail = (email) => {
   }
 };
 
+//Validate the birthdate
+const validateBD = (date) => {
+  const BDdate = new Date(date);
+  const today = new Date();
+
+  if (!isRequired(date)) {
+    return false;
+  } else if (!isDateYmd(date)) {
+    return false;
+  } else if (BDdate > today) {
+    return false;
+  } else {
+    return true;
+  }
+};
+
 // Validate quantity field
 const validateQty = (qty) => {
   if (!isRequired(qty)) {
@@ -105,48 +129,99 @@ const validateQty = (qty) => {
   }
 };
 
-// Form submit listener
+/**
+ *
+ * Visual Function
+ *
+ */
+
+// Show error messages under input of .formData
+const showError = (el, bool, message) => {
+  const formData = el.parentElement;
+  const errorHolder = formData.querySelector("small");
+  errorHolder.textContent = "";
+
+  if (!bool) {
+    formData.classList.remove("success", "error");
+    formData.classList.add("error");
+    errorHolder.textContent = message;
+    return false;
+  } else {
+    formData.classList.remove("success", "error");
+    formData.classList.add("success");
+    return true;
+  }
+};
+
+// Show a validation message if all input of the form are true.
+const validationMessage = (bool) => {
+  const cls = ["error", "success"];
+  const formData = form.querySelectorAll(".formData");
+  const successHolder = form.querySelector("#successHolder");
+  if (bool) {
+    for (const el of formData) {
+      el.classList.remove(...cls);
+      el.querySelector("input").value = "";
+    }
+    successHolder.textContent = "Merci ! Votre réservation a été reçue.";
+  } else {
+    successHolder.textContent = "";
+  }
+};
+
+/**
+ * Form submit listener
+ *
+ **/
+
 form.addEventListener("submit", function (e) {
   // prevent the form from submitting
   e.preventDefault();
 
   let isFormValid = false;
 
-  //Saving the different values
-  const fNameVal = firstName.value.trim();
-  const lNameVal = lastName.value.trim();
-  const emailVal = email.value.trim();
-  const bdVal = birthDate.value.trim();
-  const radioEls = radio;
-  const userCheckEl = userCheckbox;
-  const userPrefEl = userPreference;
-
   //Fields Validation
-  let isFNameValid = validateName(fNameVal);
-  let isLNameValid = validateName(lNameVal);
-  let isEmailValid = validateEmail(emailVal);
-  let isRadioValid = isRadioChecked(radioEls);
-  let isUserCheckValid = isCheckboxChecked(userCheckEl);
-
-  console.log("isFNameValid:" + isFNameValid);
-  console.log("isLNameValid:" + isLNameValid);
-  console.log("isEmailValid:" + isEmailValid);
-  console.log("isRadioValid:" + isRadioValid);
-  console.log("isUserCheckValid:" + isUserCheckValid);
+  let isFNameValid = showError(
+    firstName,
+    validateName(firstName.value.trim()),
+    "Veuillez entrer 2 caractères ou plus pour le champ du nom."
+  );
+  let isLNameValid = showError(
+    lastName,
+    validateName(lastName.value.trim()),
+    "Veuillez entrer 2 caractères ou plus pour le champ du nom."
+  );
+  let isEmailValid = showError(
+    email,
+    validateEmail(email.value.trim()),
+    "Veuillez entrer une adresse email valide."
+  );
+  let isBDValid = showError(
+    birthDate,
+    validateBD(birthDate.value.trim()),
+    "Vous devez entrer votre date de naissance."
+  );
+  let isRadioValid = showError(
+    radio[0],
+    isRadioChecked(radio),
+    "Vous devez choisir une option."
+  );
+  let isUserCheckValid = showError(
+    userCheckbox,
+    isCheckboxChecked(userCheckbox),
+    "Vous devez vérifier que vous acceptez les termes et conditions."
+  );
 
   if (
     isFNameValid &&
     isLNameValid &&
     isEmailValid &&
+    isBDValid &&
     isRadioValid &&
     isUserCheckValid
   ) {
     isFormValid = true;
   }
 
-  if (isFormValid) {
-    console.log("Success Message");
-  } else {
-    console.log("Error Message");
-  }
+  validationMessage(isFormValid);
 });
