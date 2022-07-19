@@ -22,10 +22,12 @@ function launchModal() {
 }
 
 // Close modal listener for both background and the close button
-//modalbg.addEventListener("click", closeModal);
+modalbg.addEventListener("click", closeModal);
 modalCloseBtn.addEventListener("click", closeModal);
 
 // Close Modal function
-function closeModal() {
-  modalbg.style.display = "none";
+function closeModal(event) {
+  if (event.target === this) {
+    modalbg.style.display = "none";
+  }
 }
