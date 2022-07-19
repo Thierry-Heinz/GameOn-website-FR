@@ -51,7 +51,10 @@ const isEmailValid = (email) => {
   return regex.test(email);
 };
 
+<<<<<<< HEAD
 //Test
+=======
+>>>>>>> 0d8de3cb7108e02dd14683dce3091a4d37571884
 const isDateYmd = (date) => {
   const regex = /^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/;
   return regex.test(date);
@@ -102,17 +105,30 @@ const validateEmail = (email) => {
   }
 };
 
+<<<<<<< HEAD
 //Validate the birthdate
 const validateBD = (date) => {
   const BDdate = new Date(date);
   const today = new Date();
 
+=======
+//Validate the date
+const validateBD = (date) => {
+  const BDdate = new Date(date);
+  const today = new Date();
+  if (BDdate > today) {
+    return false;
+  }
+>>>>>>> 0d8de3cb7108e02dd14683dce3091a4d37571884
   if (!isRequired(date)) {
     return false;
   } else if (!isDateYmd(date)) {
     return false;
+<<<<<<< HEAD
   } else if (BDdate > today) {
     return false;
+=======
+>>>>>>> 0d8de3cb7108e02dd14683dce3091a4d37571884
   } else {
     return true;
   }
@@ -134,8 +150,11 @@ const validateQty = (qty) => {
  * Visual Function
  *
  */
+<<<<<<< HEAD
 
 // Show error messages under input of .formData
+=======
+>>>>>>> 0d8de3cb7108e02dd14683dce3091a4d37571884
 const showError = (el, bool, message) => {
   const formData = el.parentElement;
   const errorHolder = formData.querySelector("small");
@@ -153,7 +172,10 @@ const showError = (el, bool, message) => {
   }
 };
 
+<<<<<<< HEAD
 // Show a validation message if all input of the form are true.
+=======
+>>>>>>> 0d8de3cb7108e02dd14683dce3091a4d37571884
 const validationMessage = (bool) => {
   const cls = ["error", "success"];
   const formData = form.querySelectorAll(".formData");
