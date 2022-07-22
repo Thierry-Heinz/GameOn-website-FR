@@ -12,9 +12,12 @@ const birthDateEl = document.querySelector("#birthdate");
 const radioEls = document.getElementsByName("location");
 const userCheckboxEl = document.querySelector("#checkbox1");
 const userPreferenceEl = document.querySelector("#checkbox2");
+<<<<<<< HEAD
 
 const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const regexDate = /^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/;
+=======
+>>>>>>> 9a80c2b3ced2983856a7e8f91bc5e520f4b7086c
 
 /**
  * Utility Functions
@@ -65,19 +68,27 @@ const validateName = (name, minLength) =>
   isRequired(name) && isMinLength(name.length, minLength);
 
 // Validate Email
+<<<<<<< HEAD
 const validateEmail = (email) =>
   isRequired(email) && isEmailValid(email, regexEmail);
+=======
+const validateEmail = (email) => isRequired(email) && isEmailValid(email);
+>>>>>>> 9a80c2b3ced2983856a7e8f91bc5e520f4b7086c
 
 //Validate the birthdate
 const validateBD = (date) => {
   const BDdate = new Date(date);
   const today = new Date();
 
+<<<<<<< HEAD
   return (
     isRequired(date) &&
     isDateYmd(date, regexEmail) &&
     (BDdate < today ? true : false)
   );
+=======
+  return isRequired(date) && isDateYmd(date) && (BDdate < today ? true : false);
+>>>>>>> 9a80c2b3ced2983856a7e8f91bc5e520f4b7086c
 };
 
 // Validate quantity field
