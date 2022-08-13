@@ -44,17 +44,21 @@
             Vous aimez jouer ? Notre prochain évènement gaming est ouvert aux
             réservations... Places limitées !
           </p>
-          <button class="btn-signup modal-btn">je m'inscris</button>
+          <button class="btn-signup modal-btn modal-launch-func">
+            je m'inscris
+          </button>
         </div>
         <div class="hero-img">
           <img src="./assets/bg_img.jpg" alt="img" />
         </div>
-        <button class="btn-signup modal-btn">je m'inscris</button>
+        <button class="btn-signup modal-btn modal-launch-func">
+          je m'inscris
+        </button>
       </div>
 
       <div class="bground">
         <div class="content">
-          <span class="modal-close"></span>
+          <span class="modal-close modal-close-func"></span>
           <div class="modal-body">
             <form name="reserve" action="index.html" method="get">
               <div class="formData">
@@ -207,7 +211,12 @@
 
               <input class="btn-submit" type="submit" value="C'est parti" />
             </form>
-            <span id="successHolder"></span>
+            <span id="successHolder">
+              <span class="successHolder__message"></span>
+              <button class="modal-btn btn-close modal-close-func">
+                Fermer
+              </button>
+            </span>
           </div>
         </div>
       </div>
