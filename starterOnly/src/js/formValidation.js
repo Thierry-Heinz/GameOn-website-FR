@@ -116,11 +116,17 @@ const validationMessage = (bool) => {
     ".successHolder__message"
   );
   if (bool) {
+    // reset of Form inputs
     for (const formData of formDatas) {
       formData.setAttribute("data-error-visible", false);
       formData.setAttribute("data-error", "");
       formData.querySelector("input").value = "";
     }
+    //Unchecking the radios button
+    for (radio of radioEls) {
+      radio.checked = false;
+    }
+
     formEl.style.display = "none";
     successHolder.style.display = "block";
     successMessageHolder.textContent = "Merci ! Votre réservation a été reçue.";
@@ -142,8 +148,6 @@ const validationMessage = (bool) => {
 
 formEl.addEventListener("submit", function (e) {
   e.preventDefault();
-
-  let isFormValid = false;
 
   //Fields Validation
   let isFNameValid = showError(
@@ -182,17 +186,14 @@ formEl.addEventListener("submit", function (e) {
     "Vous devez vérifier que vous acceptez les termes et conditions."
   );
 
-  if (
+  // Modifications: taking into account the suggestion, passing all the booleans directly into the function.
+  validationMessage(
     isFNameValid &&
-    isLNameValid &&
-    isEmailValid &&
-    isBDValid &&
-    isQuantityValid &&
-    isRadioValid &&
-    isUserCheckValid
-  ) {
-    isFormValid = true;
-  }
-
-  validationMessage(isFormValid);
+      isLNameValid &&
+      isEmailValid &&
+      isBDValid &&
+      isQuantityValid &&
+      isRadioValid &&
+      isUserCheckValid
+  );
 });

@@ -12,7 +12,6 @@ for (const button of modalOpenBtns) {
 for (const button of modalCloseBtns) {
   button.addEventListener("click", closeModal);
 }
-
 // Close listeners for the background
 modalbg.addEventListener("click", closeModal);
 
